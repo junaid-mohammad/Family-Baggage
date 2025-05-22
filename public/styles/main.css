@@ -124,6 +124,8 @@ button:focus-visible {
   font-size: 1.5rem;
   text-align: left;
   padding: 15px;
+  margin-top: -140px;
+  margin-bottom: 80px;
   /* Removed position: absolute, left, bottom */
 }
 
@@ -324,7 +326,7 @@ footer nav a:hover {
     flex-flow: row wrap;
     height: auto;
     padding: 4rem 1rem 1rem;
-    margin-top: 20px;
+    margin-top: -20px;
   }
 
   .ag-canvas_svg {
@@ -375,7 +377,9 @@ footer nav a:hover {
   .total-count {
     font-size: 1.2rem;
     text-align: left;
-    padding: 20px 10px 30px;
+    /* padding: 20px 10px 30px; */
+    margin-top: 10px;
+    margin-bottom: 40px;
   }
 }
 
