@@ -25,9 +25,8 @@ const db = new pg.Client({
   database: process.env.DB_NAME,   // e.g., 'world'
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,       // e.g., 5432
-  ssl: process.env.NODE_ENV === 'production' 
-    ? { rejectUnauthorized: false } // Enable SSL for Azure or Heroku
-    : false                         // Disable SSL for local dev
+  // Enable SSL in production for secure connections, disable in local dev
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,                         // Disable SSL for local dev
 });
 
 // ----------------------
