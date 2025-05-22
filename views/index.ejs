@@ -1,11 +1,29 @@
+<!-- 
+  ------------------------------------------------------
+  Family Baggage – Main View (index.ejs)
+  ------------------------------------------------------
+  This is the primary UI for the app, displaying:
+  - A clickable navbar of family members (users)
+  - A form to add new countries
+  - A dynamic world map showing visited countries
+  - The total number of countries visited
+
+  Notes:
+  - The fill color of each visited country is based on the selected user's color.
+  - If a country is invalid or duplicated, an error message is shown in the input.
+  - This page relies on `color`, `users`, `countries`, and `total` being passed in via EJS locals.
+  ------------------------------------------------------
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Tracker</title>
+  <title>Family Baggage</title>
   <link rel="stylesheet" href="./styles/main.css">
+  <link rel="icon" type="image/png" href="https://img.icons8.com/?size=100&id=Z8jI6o8LaZFL&format=png&color=000000" />
 </head>
 
 <body>
@@ -23,6 +41,7 @@
   </form>
 
   <form action="/add" method="post">
+    <!-- Show error message as placeholder if country is invalid -->
     <input type="text" name="country" autofocus placeholder="<%= locals.error ? error :  'Enter country name'%>">
     <button type="submit" style="background-color: <%= color %>;">Add</button>
   </form>
@@ -388,12 +407,22 @@
   <h2 class="total-count">Total Countries: <%=total%>
   </h2>
   <script>
+    // Dynamically color in all visited countries on the map
     const country_codes = "<%= countries %>".split(",")
     console.log(typeof ("<%= countries %>"))
     country_codes.forEach(code => {
       document.getElementById(code).style.fill = "<%= color %>"
     });
   </script>
+  <footer>
+    <p>&copy; <%= new Date().getFullYear() %> | Junaid Arif</p>
+    <nav>
+      <a href="https://junaid-mohammad.github.io/HTML-Portfolio-Website/" target="_blank">Website</a>
+      <a href="https://github.com/junaid-mohammad" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/junaidarif-mohammad/" target="_blank">LinkedIn</a>
+      <a href="mailto:mohammad.junaidarif@mail.mcgill.ca">Email</a>
+    </nav>
+  </footer>
 </body>
 
 </html>

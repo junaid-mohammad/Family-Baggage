@@ -1,0 +1,241 @@
+/* ----------------------------------------------------------
+   new-user.css – Styles for New Family Member Form (new-user.ejs)
+   ----------------------------------------------------------
+   - Handles layout, form input styling, color selection, and 
+     button groups for adding a new family member.
+   - Includes hover effects and mobile responsiveness.
+   - Used exclusively by new-user.ejs view.
+---------------------------------------------------------- */
+
+
+/* --------------------
+   Base Setup
+-------------------- */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin-top: -10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  background-color: #21252b;
+}
+
+
+/* --------------------
+   Typography
+-------------------- */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+form p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 20px 0 10px;
+}
+
+
+/* --------------------
+   Color Picker Circles
+-------------------- */
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + label span {
+  transform: scale(1.25);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+/* Selected Color Borders */
+input[type="radio"]:checked + label .red    { border: 2px solid #711313; }
+input[type="radio"]:checked + label .orange { border: 2px solid #873a08; }
+input[type="radio"]:checked + label .yellow { border: 2px solid #816102; }
+input[type="radio"]:checked + label .olive  { border: 2px solid #505a0b; }
+input[type="radio"]:checked + label .green  { border: 2px solid #0e4e1d; }
+input[type="radio"]:checked + label .teal   { border: 2px solid #003633; }
+input[type="radio"]:checked + label .blue   { border: 2px solid #103f62; }
+input[type="radio"]:checked + label .violet { border: 2px solid #321a64; }
+input[type="radio"]:checked + label .purple { border: 2px solid #501962; }
+input[type="radio"]:checked + label .pink   { border: 2px solid #851554; }
+
+
+/* --------------------
+   Color Circle Labels
+-------------------- */
+label {
+  width: 35px;
+  height: 35px;
+  margin: 8px 10px 8px 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+label:hover span {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+label span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Circle Fill Colors */
+label span.red    { background: #db2828; }
+label span.orange { background: #f2711c; }
+label span.yellow { background: #fbbd08; }
+label span.olive  { background: #b5cc18; }
+label span.green  { background: #21ba45; }
+label span.teal   { background: #00b5ad; }
+label span.blue   { background: #2185d0; }
+label span.violet { background: #6435c9; }
+label span.purple { background: #a333c8; }
+label span.pink   { background: #e03997; }
+
+
+/* --------------------
+   Form Container & Spacing
+-------------------- */
+.spacer {
+  margin-bottom: 30px;
+}
+
+.new-user-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0vh;
+  text-align: center;
+}
+
+
+/* --------------------
+   Button Group Styling
+-------------------- */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.button-group button,
+.button-group .cancel-button {
+  min-width: 100px;
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+
+/* Cancel Button Style */
+.cancel-button {
+  display: inline-block;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  text-decoration: none;
+}
+
+.cancel-button:hover {
+  background-color: #ffffff;
+  color: #21252b;
+  transform: scale(1.05);
+}
+
+/* ================================
+     🔗 Fixed Footer for New User Page
+     ================================ */
+footer {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #cccccc;
+  font-size: 0.9rem;
+  font-family: "Roboto", sans-serif;
+  border-top: 1px solid #2f343e;
+}
+
+footer nav {
+  margin-top: 6px;
+}
+
+footer nav a {
+  color: #bbb;
+  text-decoration: none;
+  font-weight: 400;
+  margin: 0 12px;
+  transition: color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+footer nav a:hover {
+  color: #ffffff;
+}
+
+
+/* --------------------
+   Mobile Responsive Tweaks
+-------------------- */
+@media screen and (max-width: 767px) {
+  .new-user-wrapper {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px 10px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  form p {
+    font-size: 1.5rem;
+  }
+
+  input[type="text"] {
+    font-size: 15px;
+    padding: 14px;
+    margin-bottom: 20px;
+  }
+
+  label {
+    margin: 6px 6px;
+  }
+
+  .spacer {
+    margin: 20px 0;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  .button-group button,
+  .button-group .cancel-button {
+    width: 100%;
+    max-width: 160px;
+    text-align: center;
+  }
+}
