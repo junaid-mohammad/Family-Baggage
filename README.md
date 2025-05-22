@@ -118,13 +118,13 @@ The local `.env` file and cloud App Settings contain corresponding values for DB
 
 ### 🔁 GitHub Actions & Continuous Deployment
 
-Every push to the `main` branch triggers a **GitHub Actions** workflow that builds and deploys the app to Azure automatically. You can find an identical example in the [Capitalism](https://github.com/junaid-mohammad/Capitalism) repo’s GitHub Actions setup.
+Every push to the `main` branch triggers a **GitHub Actions** workflow that builds and deploys the app to Azure automatically. You can find an identical example in the [**Capitalism**](https://github.com/junaid-mohammad/Capitalism) repo’s GitHub Actions setup.
 
 ---
 
 ### 🧠 Database Migration & Seeding
 
-Tables for `users`, `countries`, and `visited_countries` were exported using `pg_dump` from a local PostgreSQL instance and imported to Azure via `psql`. For a step-by-step breakdown (including SQL commands, common errors, and firewall tips), refer to the [deployment section in Capitalism](https://github.com/junaid-mohammad/Capitalism#-deployment--workflow).
+Tables for `users`, `countries`, and `visited_countries` were exported using `pg_dump` from a local PostgreSQL instance and imported to Azure via `psql`. For a step-by-step breakdown (including SQL commands, common errors, and firewall tips), refer to the [**deployment section in Capitalism**](https://github.com/junaid-mohammad/Capitalism#-deployment--workflow).
 
 ---
 
@@ -157,4 +157,4 @@ This project is open-source and available for anyone to learn from, build on, or
 
 - Inspired by a love for geography, travel, and memory-keeping.
 - Powered by **Node.js**, **Express**, **PostgreSQL**, and clean, responsive **EJS** templating.
-- Designed and developed by [Junaid Arif](https://github.com/junaid-mohammad), with deployment powered by **Azure**.
+- Designed and developed by [**Junaid Arif**](https://github.com/junaid-mohammad), with deployment powered by **Azure**.
