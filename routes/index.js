@@ -8,6 +8,7 @@
 // Routes:
 // - GET "/"         → Render home page with visited countries for the current user
 // - POST "/add"     → Add a new country to the visited list for the current user
+// - POST "/delete"  → Remove a country from the visited list for the current user
 // - POST "/user"    → Switch users or go to new user form
 // - POST "/new"     → Create a new user and redirect to homepage
 // ------------------------------------------------------
@@ -43,6 +44,8 @@ router.get("/", async (req, res) => {
     total: countries.length,
     users,
     color,
+    errorInput: "",
+    error: "",
   });
 });
 
@@ -79,6 +82,51 @@ router.post("/add", async (req, res) => {
   } catch {
     // No valid country name found
     await renderWithError(res, currentUserId, "Country name does not exist, try again.");
+  }
+});
+
+// ----------------------
+// POST "/delete"
+// Delete a country from the current user's visited list
+// ----------------------
+router.post("/delete", async (req, res) => {
+  const input = req.body["country"];
+
+  try {
+    // 🔍 First, check if user has any countries to delete
+    const visited = await checkVisited(currentUserId);
+    if (visited.length === 0) {
+      await renderWithError(res, currentUserId, "You haven’t added any countries yet.", input);
+      return;
+    }
+
+    // 🔍 Try matching input to a country code
+    const result = await db.query(
+      "SELECT country_code FROM countries WHERE LOWER(country_name) LIKE '%' || $1 || '%'",
+      [input.toLowerCase()]
+    );
+
+    if (result.rows.length === 0) {
+      await renderWithError(res, currentUserId, "Country name does not exist, try again.", input);
+      return;
+    }
+
+    const countryCode = result.rows[0].country_code;
+
+    // ❌ Attempt deletion
+    const deletion = await db.query(
+      "DELETE FROM visited_countries WHERE country_code = $1 AND user_id = $2 RETURNING *;",
+      [countryCode, currentUserId]
+    );
+
+    if (deletion.rowCount === 0) {
+      await renderWithError(res, currentUserId, "This country is not on your visited list.", input);
+    } else {
+      res.redirect("/");
+    }
+
+  } catch {
+    await renderWithError(res, currentUserId, "Something went wrong while trying to remove the country.", input);
   }
 });
 

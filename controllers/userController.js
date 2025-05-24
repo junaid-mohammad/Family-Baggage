@@ -44,7 +44,8 @@ export async function checkVisited(userId) {
 // @param {Object} res - Express response object
 // @param {Number} currentUserId - Current user ID
 // @param {String} errorMsg - Error message to display
-export async function renderWithError(res, currentUserId, errorMsg) {
+// @param {String} errorInput - The input value that caused the error
+export async function renderWithError(res, currentUserId, errorMsg, errorInput = "") {
   const countries = await checkVisited(currentUserId);
   const users = await getUsers();
   const color = users.find(u => u.id == currentUserId)?.color || "white";
@@ -55,5 +56,6 @@ export async function renderWithError(res, currentUserId, errorMsg) {
     users,
     color,
     error: errorMsg,
+    errorInput: errorInput,
   });
 }

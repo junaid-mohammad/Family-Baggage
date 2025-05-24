@@ -114,6 +114,16 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+/* Button Group Layout */
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: left;
+  flex-wrap: wrap;
+  /* margin-top: 10px; */
+  /* margin-left: 10px; */
+}
+
 
 /* --------------------
    Footer Country Count
@@ -372,6 +382,10 @@ footer nav a:hover {
     max-width: 120px;
     text-align: center;
     border-radius: 6px;
+  }
+
+  .button-group {
+    gap: 0;
   }
 
   .total-count {

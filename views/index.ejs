@@ -34,16 +34,22 @@
         <%= user.name %>
       </label>
       <% }); %>
-
         <input type="submit" name="add" value="new" id="tab">
         <label for="tab">Add Family Member</label>
-
   </form>
 
-  <form action="/add" method="post">
-    <!-- Show error message as placeholder if country is invalid -->
-    <input type="text" name="country" autofocus placeholder="<%= locals.error ? error :  'Track your travels — enter a visited country name to map your journey.'%>">
-    <button type="submit" style="background-color: <%= color %>;">Add</button>
+  <form method="post" class="country-form">
+    <input
+      type="text"
+      name="country"
+      value="<%= errorInput || '' %>"
+      autofocus
+      placeholder="<%= error || 'Add a country you’ve visited' %>"
+    />
+    <div class="button-group">
+      <button formaction="/add" type="submit" style="background-color: <%= color %>;">Add</button>
+      <button formaction="/delete" type="submit" style="background-color: #d9534f;">Remove</button>
+    </div>
   </form>
 
   <section class="ag-canvas">
