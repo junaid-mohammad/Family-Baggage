@@ -149,7 +149,7 @@ Currently used for redundancy, it can easily be extended for **Azure Pipelines**
 
 ## 📄 License
 
-This project is open-source and available for anyone to learn from, build on, or improve. Use it for your own family, travel logs, or even a class project — just don't forget to give credit where it's due.
+This project is open-source and available for anyone to learn from, build on, or improve. Use it for your own family, travel logs, or even web development practice.
 
 ---
 
